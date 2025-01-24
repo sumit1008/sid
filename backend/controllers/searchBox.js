@@ -3,11 +3,16 @@ import mongoose from "mongoose";
 import zlib from "zlib";
 import { tf_idf, idf, Db_Keyword, Db_mag, all_problem } from "../db/index.js";
 import { removeStopwords } from "stopword";
-import { MONGO_URI } from "../utils/constants.js";
+// import { MONGO_URI } from "../utils/constants.js";
+import dotenv from "dotenv";
+
+dotenv.config();
+const Mongo = process.env.MONGO_URI;
+
 
 mongoose
   .connect(
-    MONGO_URI
+    Mongo
   )
   .then(() => console.log("DB connected"))
   .catch((err) => console.error("DB connection error:", err));

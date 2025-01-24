@@ -1,12 +1,14 @@
 import mongoose from "mongoose";
-import { MONGO_URI } from "../utils/constants.js";
+import dotenv from "dotenv";
 
-//connnect to mongodb
+dotenv.config();
+
+const MONGO_URI = process.env.MONGO_URI;
+
+// console.log("MONGO_URI from .env:", MONGO_URI);
 
 mongoose
-  .connect(
-    MONGO_URI
-  )
+  .connect(MONGO_URI)
   .then(() => console.log("DB connected"))
   .catch((err) => console.error("DB connection error:", err));
 

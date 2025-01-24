@@ -9,12 +9,17 @@ import {
 import fs from "fs/promises";
 import zlib from "zlib";
 import path from "path";
-import { MONGO_URI } from "./backend/utils/constants.js";
+// import { MONGO_URI } from "./backend/utils/constants.js";
+import dotenv from "dotenv";
+
+dotenv.config();
+const Mongo = process.env.MONGO_URI;
+
 
 
 mongoose
   .connect(
-    MONGO_URI
+    Mongo
   )
   .then(() => console.log("DB connected"))
   .catch((err) => console.error("DB connection error:", err));
